@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Page View Counter</title>
+</head>
+<body>
+
+  <h1>Welcome to My Website</h1>
+  <p>This page has been viewed <span id="pageViews">0</span> times.</p>
+
+  <script>
+    // Function to update and display the page view count
+    function updatePageViews() {
+      // Check if the 'pageViews' key exists in localStorage
+      if (localStorage.getItem('pageViews') === null) {
+        // If not, initialize the count to 1
+        localStorage.setItem('pageViews', 1);
+      } else {
+        // If it exists, increment the count
+        let count = parseInt(localStorage.getItem('pageViews'), 10);
+        count++;
+        localStorage.setItem('pageViews', count);
+      }
+
+      // Display the updated count on the page
+      document.getElementById('pageViews').textContent = localStorage.getItem('pageViews');
+    }
+
+    // Call the function on page load
+    updatePageViews();
+  </script>
+
+</body>
+</html>
